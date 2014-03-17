@@ -9,7 +9,6 @@
   <meta name="author" content="SitePoint">
 
   <link rel="stylesheet" href="css/styles.css">
-
 </head>
 
 <body>
@@ -21,17 +20,56 @@
         </a></li>        
     </ul>
     <div id="tab_content" class="tab_content">
-        <div id="page1" class="page">
-            Page 1
-        </div>
-        <div id="page2" class="page">
-            Page 2
-        </div>
-        <div id="page3" class="page">
-            Page 3
+        <div id="tab_content_inner" class="tab_content_inner">
+            <div id="page1" class="page">
+                <table id="display1"></table>
+            </div>
+            <div id="page2" class="page">
+                <table id="display2"></table>
+            </div>
+            <div id="page3" class="page">
+                <table id="display3"></table>
+            </div>
         </div>
     </div>
   </div>
+  <script src="../js/gihyo.jp/assets/files/dev/serial/01/crossbrowser-javascript/0021/tween.js"></script>
   <script src="js/scripts.js"></script>
+  <script src="../js/jquery.com/jquery-1.11.0.min.js" type="text/javascript"></script>
+  <script>
+  $.getJSON("http://api.mixcloud.com/search/?q=jazz&type=tag", function( data ) {
+    var items = [];
+    $.each( data.data, function( key, val ) {
+      var tr=$('<tr></tr>');
+      k = 'name';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      k = 'key';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      tr.appendTo('#display1');
+    });
+  });
+  $.getJSON("http://api.mixcloud.com/search/?q=jazz&type=user&limit=5", function( data ) {
+    var items = [];
+    $.each( data.data, function( key, val ) {
+      var tr=$('<tr></tr>');
+      k = 'name';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      k = 'key';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      tr.appendTo('#display2');
+    });
+  });
+  $.getJSON("http://api.mixcloud.com/search/?q=jazz&type=cloudcast&limit=5", function( data ) {
+    var items = [];
+    $.each( data.data, function( key, val ) {
+      var tr=$('<tr></tr>');
+      k = 'name';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      k = 'key';
+      $( "<td id='" + k + "'>" + val[k] + "</td>" ).appendTo(tr);
+      tr.appendTo('#display3');
+    });
+  });
+  </script>
 </body>
 </html>

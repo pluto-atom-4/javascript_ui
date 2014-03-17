@@ -30,20 +30,32 @@
 .tab_content {
     position:relative;
     height:200px;
+    width:450px;
+    overflow:hidden;
+}
+.tab_content_inner{
+    position:absolute;
+    height:200px;
+    width:1350px;
+    overflow:auto;
 }
 .tab_content div.page{
     width:450px;
     height:200px;
     position:absolute;
+    top:0px;
     color:#222;
 }
 #page1{
     background-color:#ffa;
+    left:0px;
 }
 #page2{
     background-color:#faf;
+    left:450px;
 }
 #page3{
     background-color:#aff;
+    left:900px;
 }
 
